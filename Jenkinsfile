@@ -25,7 +25,13 @@ pipeline {
 
     post {
         always {
-            jacoco(execPattern: '**/*/target/site/jacoco/jacoco.xml')
+            //jacoco(execPattern: '**/*/target/site/jacoco/jacoco.xml')
+            jacoco(
+                execPattern: '**/**.exec',
+                classPattern: '**/classes',
+                sourcePattern: '**/src/main/java',
+                changeBuildStatus: false
+            )
         }
     }
 }
